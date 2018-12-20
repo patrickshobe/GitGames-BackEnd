@@ -15,12 +15,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 gem 'gqli'
 
-
 group :test do
   gem 'database_cleaner'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
+  gem 'codecov'
 end
 
 group :development, :test do
