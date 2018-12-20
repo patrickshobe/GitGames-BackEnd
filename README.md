@@ -10,4 +10,5 @@ count](https://badge.waffle.io/patrickshobe/GitGames-BackEnd.svg?columns=all)](h
 ### Build Status
 [![CircleCI](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master.svg?style=svg)](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master)
 
-
+### Test Coverage
+[![codecov](https://codecov.io/gh/patrickshobe/GitGames-BackEnd/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickshobe/GitGames-BackEnd)
