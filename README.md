@@ -1,24 +1,13 @@
-# README
+# GitGames-Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GitGames is a tool to give developer's metrics regarding their git history and to gamify being a developer.
 
-Things you may want to cover:
+### Agile Board:
 
-* Ruby version
+[![Waffle.io - Columns and their card
+count](https://badge.waffle.io/patrickshobe/GitGames-BackEnd.svg?columns=all)](https://waffle.io/patrickshobe/GitGames-BackEnd)
 
-* System dependencies
+### Build Status
+[![CircleCI](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master.svg?style=svg)](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master)
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
