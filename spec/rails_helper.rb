@@ -29,8 +29,6 @@ end
 require 'simplecov'
 SimpleCov.start
 
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 DatabaseCleaner.strategy = :truncation
 RSpec.configure do |config|
