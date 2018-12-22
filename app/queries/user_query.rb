@@ -1,18 +1,24 @@
 class UserQuery
   def query(username)
-    query_maker(username).data.user
+   validate_response(username)
   end
 
   private
+
+  def validate_response(username)
+    response = query_maker(username)
+    return "User #{username} Not Found" unless response.data.user
+    return response.data.user
+  end
 
   def query_maker(username)
     github_service(GQLi::DSL.query {
       user(login: username) {
         avatarUrl
-        name
-        login
         createdAt
         email
+        login
+        name
       }
     }
     )
