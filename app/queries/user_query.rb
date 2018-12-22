@@ -1,6 +1,6 @@
 class UserQuery
   def query(username)
-    query_maker(username)
+    query_maker(username).data.user
   end
 
   private
@@ -13,23 +13,9 @@ class UserQuery
         login
         createdAt
         email
-        followers(first: 10) {
-          edges {
-            node {
-              id
-            }
-          }
-        }
-        following(first: 10) {
-          edges {
-            node {
-              id
-            }
-          }
-        }
-          }
-        }
-      )
+      }
+    }
+    )
   end
 
   def github_service(query_data)

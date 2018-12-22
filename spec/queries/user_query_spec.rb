@@ -8,14 +8,12 @@ describe 'User Query Spec' do
 
       response = user_query.query(username)
 
-      expect(response.data.user).to have_key("avatarUrl")
-      expect(response.data.user).to have_key("name")
-      expect(response.data.user).to have_key("login")
-      expect(response.data.user).to have_key("createdAt")
-      expect(response.data.user).to have_key("email")
-      expect(response.data.user).to have_key("followers")
-      expect(response.data.user).to have_key("following")
-      expect(response.data.user["name"]).to eq("Tara Craig")
+      expect(response).to have_key("avatarUrl")
+      expect(response).to have_key("name")
+      expect(response).to have_key("login")
+      expect(response).to have_key("createdAt")
+      expect(response).to have_key("email")
+      expect(response["name"]).to eq("Tara Craig")
     end
   end
 end
