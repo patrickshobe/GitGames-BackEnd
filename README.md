@@ -10,5 +10,39 @@ count](https://badge.waffle.io/patrickshobe/GitGames-BackEnd.svg?columns=all)](h
 ### Build Status
 [![CircleCI](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master.svg?style=svg)](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master)
 
-### Test Coverage
-[![codecov](https://codecov.io/gh/patrickshobe/GitGames-BackEnd/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickshobe/GitGames-BackEnd)
+## Endpoints
+
+All routes prepended by the app url: `https://gitgames.herokuapp.com`
+
+### Users
+
+The users endpoint returns the data for one user, it takes the username as a URL parameter.
+
+`/api/v1/users?username=coder123`
+
+##### Successful Response
+
+```
+# Request
+get `/api/v1/users?username=coder123`
+
+# Response
+{
+    "avatarUrl": "https://url_to_coder123_avatar_image",
+    "createdAt": "2018-01-31T21:48:32Z",
+    "email": "coder123@email.com",
+    "login": "coder123",
+    "name": "Coder 123"
+}
+```
+
+
+##### Failed Response
+
+```
+# Request
+get `/api/v1/users?username=notarealuser`
+
+# Response
+User notarealuser Not Found
+```
