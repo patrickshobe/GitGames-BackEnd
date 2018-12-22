@@ -12,11 +12,11 @@ describe 'Users API endpoints' do
 
         user = JSON.parse(response.body, symbolize_names: true)
 
-        expect(user).to have_key("avatarUrl")
-        expect(user).to have_key("name")
-        expect(user).to have_key("login")
-        expect(user).to have_key("createdAt")
-        expect(user).to have_key("email")
+        expect(user).to have_key(:avatarUrl)
+        expect(user).to have_key(:name)
+        expect(user).to have_key(:login)
+        expect(user).to have_key(:createdAt)
+        expect(user).to have_key(:email)
       end
     end
   end
