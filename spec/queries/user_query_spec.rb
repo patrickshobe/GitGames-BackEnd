@@ -16,4 +16,15 @@ describe 'User Query Spec' do
       expect(response["name"]).to eq("Tara Craig")
     end
   end
+
+  it 'can return a failure message' do
+    VCR.use_cassette('failed_user_query') do
+      username = 'notarealusername123494739'
+      user_query = UserQuery.new
+
+      response = user_query.query(username)
+
+      expect(response).to eq("User #{username} Not Found")
+    end
+  end
 end
