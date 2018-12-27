@@ -7,9 +7,12 @@ class CommitMessageParser
   end
 
   def get_data(username)
-    commit_query = CommitMessageQuery.new
-    response = commit_query.query(username)
-    narrow_response(response)
+    response = CommitMessageQuery.execute_query(username)
+    unless response.class == GQLi::Response
+      @word_count[:failure] = response
+    else
+      narrow_response(response)
+    end
   end
 
   private

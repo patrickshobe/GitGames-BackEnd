@@ -46,3 +46,41 @@ get `/api/v1/users?username=notarealuser`
 # Response
 User notarealuser Not Found
 ```
+
+
+### Commit Message
+
+The commit query endpoint returns the data for one user, it takes the username as a URL parameter.
+
+`/api/v1/commit_messages?username=coder123`
+
+##### Successful Response
+
+```
+# Request
+get `/api/v1/commit_messages?username=coder123`
+
+# Response
+{
+  "update": 13,
+  "readme": 8,
+  "removes": 12,
+  "vulnerability": 1,
+  "completes": 2,
+  "admin": 7,
+  "testing": 2
+}
+```
+
+
+##### Failed Response
+
+```
+# Request
+get `/api/v1/commit_messages?username=notarealuser`
+
+# Response
+{
+  "failure": "User notarealuser Not Found"
+}
+```

@@ -1,18 +1,20 @@
 class CommitMessageQuery
 
-  def query(username)
-    user_id = get_user_id(username).data.user.id
-    commit_query(username, user_id)
+  def self.execute_query(username)
+    query = new
+    user = query.get_user_id(username)
+    return "User #{username} Not Found" unless user.data.user
+    return query.commit_query(username, user)
   end
-
 
   def get_user_id(username)
     github_service(GQLi::DSL.query {
-      user(login: username) {
-        id
-      }
+                     user(login: username) {
+                       id
+                     }
     })
   end
+
 
   def commit_query(username, user_id)
     github_service(GQLi::DSL.query {
