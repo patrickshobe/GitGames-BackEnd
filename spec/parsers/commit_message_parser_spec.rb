@@ -8,9 +8,9 @@ describe 'Commit Message Query Spec' do
       message_distribution = CommitMessageParser.new
       message_distribution.get_data(username)
 
-      result = message_distribution.words
+      result = message_distribution.word_count
 
-      expect(result).to be_a(Array)
+      expect(result).to be_a(Hash)
       expect(result.length).to be >= 400
 
     end
