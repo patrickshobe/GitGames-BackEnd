@@ -26,7 +26,6 @@ describe 'Commit Message Query Spec' do
       result = message_distribution.word_count
 
       expect(result).to be_a(Hash)
-      binding.pry
       expect(result.length).to be(1)
 
     end
