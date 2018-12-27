@@ -3,8 +3,8 @@ class CommitMessageQuery
   def self.execute_query(username)
     query = new
     user = query.get_user_id(username)
-    return "User #{username} Not Found" unless user.data.user
-    return query.commit_query(username, user)
+    return query.build_failure_response(username) unless user["user"]
+    return query.commit_query(username, user["user"]["id"])
   end
 
   def get_user_id(username)
@@ -37,6 +37,10 @@ class CommitMessageQuery
           }
         }
       })
+  end
+
+  def build_failure_response(username)
+    {error:  "User #{username} Not Found"}
   end
 
   def github_service(query)

@@ -7,8 +7,9 @@ describe 'Commit Message Query Spec' do
       response = CommitMessageQuery.execute_query(username)
 
 
-      expect(response).to be_a(GQLi::Response)
-      expect(response.data).to_not be nil
+      expect(response).to be_a(Hash)
+      expect(response).to have_key("user")
+      expect(response["user"]).to have_key("repositories")
 
     end
   end

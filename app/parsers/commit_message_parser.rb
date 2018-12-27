@@ -8,8 +8,8 @@ class CommitMessageParser
 
   def get_data(username)
     response = CommitMessageQuery.execute_query(username)
-    unless response.class == GQLi::Response
-      @word_count[:failure] = response
+    if response[:error]
+      @word_count = response
     else
       narrow_response(response)
     end
@@ -18,7 +18,7 @@ class CommitMessageParser
   private
 
   def narrow_response(response)
-    narrowed_response = response.data.user.repositories.nodes
+    narrowed_response = response["user"]["repositories"]["nodes"]
     isolate_nodes(narrowed_response)
   end
 
