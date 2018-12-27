@@ -8,9 +8,13 @@ class GithubApiInterface
   end
 
   def execute_query(query)
-    @github.execute(query)
+    result = @github.execute(query)
+    strip_result(result)
   end
 
+  def strip_result(result)
+    result.data
+  end
 
   def self.get(query)
     github = new

@@ -10,8 +10,7 @@ describe 'Github API Interface' do
 
     	response = GithubApiInterface.get(query)
 
-			expect(response.data.user.keys).to eq(["createdAt", "name"])
-			expect(response.data.user["name"]).to eq("Tara Craig")
+      expect(response).to have_key("user")
 
     end
   end
