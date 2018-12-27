@@ -4,9 +4,8 @@ describe 'User Query Spec' do
   it 'can query user information' do
     VCR.use_cassette('user_query') do
       username = 'tcraig7'
-      user_query = UserQuery.new
 
-      response = user_query.query(username)
+      response = UserQuery.execute_query(username)
 
       expect(response).to have_key("avatarUrl")
       expect(response).to have_key("name")
@@ -20,11 +19,10 @@ describe 'User Query Spec' do
   it 'can return a failure message' do
     VCR.use_cassette('failed_user_query') do
       username = 'notarealusername123494739'
-      user_query = UserQuery.new
+      response = UserQuery.execute_query(username)
 
-      response = user_query.query(username)
 
-      expect(response).to eq("User #{username} Not Found")
+      expect(response).to eq({error: "User #{username} Not Found"})
     end
   end
 end
