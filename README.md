@@ -44,7 +44,9 @@ get `/api/v1/users?username=coder123`
 get `/api/v1/users?username=notarealuser`
 
 # Response
-User notarealuser Not Found
+{
+  "error": "User notarealuser Not Found"
+}
 ```
 
 
@@ -81,6 +83,6 @@ get `/api/v1/commit_messages?username=notarealuser`
 
 # Response
 {
-  "failure": "User notarealuser Not Found"
+  "error": "User notarealuser Not Found"
 }
 ```
