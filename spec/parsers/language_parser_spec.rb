@@ -32,4 +32,18 @@ describe 'Language Query Spec' do
       expect(result["Ruby"]).to be_a(Float)
     end
   end
+
+  it 'can fail to query user languages' do
+    VCR.use_cassette('language_query_sad') do
+      username = 'kjnasdfk;ajnsdfk;ajnsdf'
+
+      parsed_language = LanguageParser.new
+      parsed_language.get_data(username)
+
+      result = parsed_language.languages_percentages
+
+      expect(result).to be_a(Hash)
+      expect(result.length).to be(1)
+    end
+  end
 end

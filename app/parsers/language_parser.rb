@@ -10,7 +10,7 @@ class LanguageParser
   def get_data(username)
     response = LanguageQuery.execute_query(username)
     if response[:error]
-      @languages_breakdown = response
+      @languages_percentages = response
     else
       narrow_response(response)
     end
