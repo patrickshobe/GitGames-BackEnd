@@ -12,9 +12,9 @@ describe 'Languages API endpoints' do
 
         languages = JSON.parse(response.body, symbolize_names: true)
 
-        expect(languages). to have_key("Ruby")
-        expect(languages). to have_key("CSS")
-        expect(languages["Ruby"]). to be_a(Float)
+        expect(languages). to have_key(:Ruby)
+        expect(languages). to have_key(:CSS)
+        expect(languages[:Ruby]).to be_a(Float)
       end
     end
   end
