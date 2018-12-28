@@ -86,3 +86,39 @@ get `/api/v1/commit_messages?username=notarealuser`
   "error": "User notarealuser Not Found"
 }
 ```
+
+
+### Language Percentages
+
+The language percentages endpoint returns a breakdown of the amount a coding language is used in a user's repositories. It takes a username as a URL parameter.
+
+`/api/v1/languages?username=coder123`
+
+#### Successful Response
+
+```
+# Request
+get '/api/v1/languages?username=coder123`
+
+# Response
+{
+    "Ruby": 0.32084981003334107,
+    "CSS": 0.027025474950164895,
+    "HTML": 0.08653465642994071,
+    "Roff": 0.0014041645410913647,
+    "JavaScript": 0.5640444497178823,
+    "CoffeeScript": 0.00014144432757969987
+}
+```
+
+#### Failed Response
+
+```
+#Request
+get '/api/v1/languages?username=notarealuser`
+
+# Response
+{
+  "error": "User notarealuser Not Found"
+}
+```
