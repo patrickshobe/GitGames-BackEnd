@@ -22,7 +22,13 @@ class LanguageParser
   end
 
   def isolate_nodes(narrowed_response)
-
+    narrowed_response.each do |repo|
+      unless repo.languages.edges == []
+        repo.languages.edges.each do |language|
+          @languages_breakdown[language["node"]["name"]] += language["size"]
+        end
+      end
+    end
+    @languages_breakdown
   end
-
 end
