@@ -1,8 +1,10 @@
 class LanguageParser
-  attr_reader :languages_breakdown
+  attr_reader :languages_breakdown,
+              :languages_percentages
 
   def initialize
     @languages_breakdown = Hash.new(0)
+    @languages_percentages = Hash.new(0)
   end
 
   def get_data(username)
@@ -30,5 +32,14 @@ class LanguageParser
       end
     end
     @languages_breakdown
+    percentages
+  end
+
+  def percentages
+    total = @languages_breakdown.values.sum
+    @languages_breakdown.each do |name, bytesize|
+      @languages_percentages[name] = bytesize.to_f / total
+    end
+    @languages_percentages
   end
 end
