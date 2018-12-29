@@ -11,11 +11,6 @@ class LanguageQuery
 
   def validate_response(username)
     response = make_query(username)
-    # if response["user"].nil?
-    #   build_failure_response(username)
-    # else
-    #   response["user"]
-    # end
     return build_failure_response(username) if response["user"].nil?
     return response["user"]
   end
