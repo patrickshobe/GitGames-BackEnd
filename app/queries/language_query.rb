@@ -20,6 +20,7 @@ class LanguageQuery
       user(login: username) {
         repositories(last: 100) {
           nodes {
+            name
             languages(last: 10) {
               edges {
                 size
