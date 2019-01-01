@@ -15,11 +15,13 @@ describe 'Commit Timeline Query' do
   end
   it 'can fail to query user commits over time' do
     VCR.use_cassette('commit_timeline_failure') do
-      username = 'thishastofailthereisnowaythisis'
+      username = 'notarealusername1234567'
       response = CommitTimelineQuery.execute_query(username)
 
       expect(response).to be_a(Hash)
       expect(response).to have_key(:error)
+      expect(response).to eq({error: "User #{username} Not Found"})
+
     end
   end
 end
