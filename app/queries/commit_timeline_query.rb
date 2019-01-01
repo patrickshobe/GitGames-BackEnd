@@ -9,12 +9,12 @@ class CommitTimelineQuery
 
   def commit_timeline_query(username)
     github_service(GQLi::DSL.query {
-      user(login: "patrickshobe") {
+      user(login: username) {
         contributionsCollection {
           contributionCalendar {
             __node("weeks") {
+              firstDay
               contributionDays {
-                date
                 contributionCount
               }
             }

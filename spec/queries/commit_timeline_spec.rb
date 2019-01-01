@@ -11,7 +11,6 @@ describe 'Commit Timeline Query' do
       expect(response["user"]).to have_key("contributionsCollection")
       expect(response["user"]["contributionsCollection"]).to have_key("contributionCalendar")
       expect(response["user"]["contributionsCollection"]["contributionCalendar"]).to have_key("weeks")
-
     end
   end
   it 'can fail to query user commits over time' do
@@ -19,10 +18,8 @@ describe 'Commit Timeline Query' do
       username = 'thishastofailthereisnowaythisis'
       response = CommitTimelineQuery.execute_query(username)
 
-      binding.pry
       expect(response).to be_a(Hash)
-      expect(response).to have_key("error")
-
+      expect(response).to have_key(:error)
     end
   end
 end
