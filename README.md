@@ -120,5 +120,61 @@ get '/api/v1/languages?username=notarealuser`
 # Response
 {
   "error": "User notarealuser Not Found"
-}
+```
+
+
+### Commit Timeline
+
+The commit timeline endpoint returns a breakdown of the user's commits over time
+averaged in weekly increments as well as daily count. It takes a username as a
+URL parameter.
+
+`/api/v1/commit_timelines?username=coder123`
+
+#### Successful Response
+
+```
+# Request
+get '/api/v1/commit_timelines?username=coder123`
+
+# Response
+[
+  {
+    "firstDay"=>"2017-12-31",
+    "contributionDays"=>
+      [
+        {"date"=>"2017-12-31", "contributionCount"=>0},
+        {"date"=>"2018-01-01", "contributionCount"=>0},
+        {"date"=>"2018-01-02", "contributionCount"=>0},
+        {"date"=>"2018-01-03", "contributionCount"=>3},
+        {"date"=>"2018-01-04", "contributionCount"=>1},
+        {"date"=>"2018-01-05", "contributionCount"=>5},
+        {"date"=>"2018-01-06", "contributionCount"=>3}
+      ],
+    "averageCommits"=>1.7142857142857142},
+  {
+    "firstDay"=>"2018-01-07",
+    "contributionDays"=>
+      [
+        {"date"=>"2018-01-07", "contributionCount"=>2},
+        {"date"=>"2018-01-08", "contributionCount"=>19},
+        {"date"=>"2018-01-09", "contributionCount"=>3},
+        {"date"=>"2018-01-10", "contributionCount"=>1},
+        {"date"=>"2018-01-11", "contributionCount"=>5},
+        {"date"=>"2018-01-12", "contributionCount"=>0},
+        {"date"=>"2018-01-13", "contributionCount"=>0}
+      ],
+    "averageCommits"=>4.285714285714286}
+]
+```
+
+#### Failed Response
+
+```
+#Request
+get '/api/v1/commit_timelines?username=notarealuser`
+
+# Response
+{
+  "error": "User notarealuser Not Found"
 ```

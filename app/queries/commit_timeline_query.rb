@@ -15,6 +15,7 @@ class CommitTimelineQuery
             __node("weeks") {
               firstDay
               contributionDays {
+                date
                 contributionCount
               }
             }
