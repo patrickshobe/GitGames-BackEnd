@@ -17,7 +17,6 @@ class LanguageParser
     else
       narrow_response(response)
     end
-    @user_percentages
   end
 
   private
@@ -25,6 +24,7 @@ class LanguageParser
   def narrow_response(response)
     narrowed_response = response["repositories"]["nodes"]
     isolate_nodes(narrowed_response)
+    @user_percentages
   end
 
   def isolate_nodes(narrowed_response)
