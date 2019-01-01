@@ -11,11 +11,6 @@ class LanguageQuery
 
   def validate_response(username)
     response = make_query(username)
-    # if response["user"].nil?
-    #   build_failure_response(username)
-    # else
-    #   response["user"]
-    # end
     return build_failure_response(username) if response["user"].nil?
     return response["user"]
   end
@@ -25,6 +20,7 @@ class LanguageQuery
       user(login: username) {
         repositories(last: 100) {
           nodes {
+            name
             languages(last: 10) {
               edges {
                 size
