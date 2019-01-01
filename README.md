@@ -98,16 +98,32 @@ The language percentages endpoint returns a breakdown of the amount a coding lan
 
 ```
 # Request
-get '/api/v1/languages?username=coder123`
+get '/api/v1/languages?username=coder123'
 
 # Response
 {
-    "Ruby": 0.32084981003334107,
-    "CSS": 0.027025474950164895,
-    "HTML": 0.08653465642994071,
-    "Roff": 0.0014041645410913647,
-    "JavaScript": 0.5640444497178823,
-    "CoffeeScript": 0.00014144432757969987
+    "Overall": {
+        "Ruby": 0.3217743199811868,
+        "CSS": 0.026966700991256136,
+        "HTML": 0.08624164451602329,
+        "Roff": 0.0013994099496176787,
+        "JavaScript": 0.5634769591739295,
+        "CoffeeScript": 0.00014096538798663122
+    },
+    "Repositories": [
+        {
+            "Ruby": 0.09082092918358142,
+            "CSS": 0.7837843933243122,
+            "HTML": 0.12539467749210645,
+            "name": "example-1"
+        },
+        {
+            "Ruby": 0.7972954105750244,
+            "JavaScript": 0.02259808125735485,
+            "CSS": 0.045615014859285555,
+            "HTML": 0.13449149330833515,
+            "name": "example-2"
+        }
 }
 ```
 
