@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Language Query Spec' do
+describe 'Language Query Parser Spec' do
   it 'can parse language query info' do
     VCR.use_cassette('language_parser_happy') do
       username = 'tcraig7'
@@ -10,10 +10,10 @@ describe 'Language Query Spec' do
 
       result = parsed_language.languages_breakdown
 
-      expect(result).to be_a(Hash)
-      expect(result).to have_key("Ruby")
-      expect(result).to have_key("CSS")
-      expect(result["Ruby"]).to be_a(Integer)
+      expect(result.overall).to be_a(Hash)
+      expect(result.overall).to have_key("Ruby")
+      expect(result.overall).to have_key("CSS")
+      expect(result.overall["Ruby"]).to be_a(Integer)
     end
   end
 
