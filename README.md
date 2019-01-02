@@ -2,19 +2,19 @@
 
 GitGames is a tool to give developer's metrics regarding their git history and to gamify being a developer.
 
-### Agile Board:
+#### Agile Board:
 
 [![Waffle.io - Columns and their card
 count](https://badge.waffle.io/patrickshobe/GitGames-BackEnd.svg?columns=all)](https://waffle.io/patrickshobe/GitGames-BackEnd)
 
-### Build Status
+#### Build Status
 [![CircleCI](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master.svg?style=svg)](https://circleci.com/gh/patrickshobe/GitGames-BackEnd/tree/master)
 
-## Endpoints
+# Endpoints
 
 All routes prepended by the app url: `https://gitgames.herokuapp.com`
 
-### Users
+## Users
 
 The users endpoint returns the data for one user, it takes the username as a URL parameter.
 
@@ -50,7 +50,7 @@ get `/api/v1/users?username=notarealuser`
 ```
 
 
-### Commit Message
+## Commit Message
 
 The commit query endpoint returns the data for one user, it takes the username as a URL parameter.
 
@@ -88,13 +88,13 @@ get `/api/v1/commit_messages?username=notarealuser`
 ```
 
 
-### Language Percentages
+## Language Percentages
 
 The language percentages endpoint returns a breakdown of the amount a coding language is used in a user's repositories. It takes a username as a URL parameter.
 
 `/api/v1/languages?username=coder123`
 
-#### Successful Response
+##### Successful Response
 
 ```
 # Request
@@ -127,7 +127,7 @@ get '/api/v1/languages?username=coder123'
 }
 ```
 
-#### Failed Response
+##### Failed Response
 
 ```
 #Request
@@ -136,18 +136,24 @@ get '/api/v1/languages?username=notarealuser`
 # Response
 {
   "error": "User notarealuser Not Found"
+}
 ```
 
 
-### Commit Timeline
+## Commit Timeline
 
 The commit timeline endpoint returns a breakdown of the user's commits over time
-averaged in weekly increments as well as daily count. It takes a username as a
-URL parameter.
+averaged in weekly increments as well as daily count.
+
+It takes a username as a URL parameter and an OPTIONAL start date, it's
+important to not that Github limits the farthest back start date as being 366
+days in the past, this can only be used to reduce that time frame.
+
+### Without Start Date
 
 `/api/v1/commit_timelines?username=coder123`
 
-#### Successful Response
+##### Successful Response
 
 ```
 # Request
@@ -184,7 +190,7 @@ get '/api/v1/commit_timelines?username=coder123`
 ]
 ```
 
-#### Failed Response
+##### Failed Response
 
 ```
 #Request
@@ -194,3 +200,57 @@ get '/api/v1/commit_timelines?username=notarealuser`
 {
   "error": "User notarealuser Not Found"
 ```
+}
+
+### With Start Date
+
+`/api/v1/commit_timelines?username=coder123&startDate=2019-01-01`
+
+##### Successful Response
+
+```
+# Request
+get '`/api/v1/commit_timelines?username=coder123&startDate=2019-01-01`
+
+# Response
+
+  [
+    {
+      :firstDay=>"2018-09-02",
+      :contributionDays=>
+        [
+          {:date=>"2018-09-02", :contributionCount=>45},
+          {:date=>"2018-09-03", :contributionCount=>20},
+          {:date=>"2018-09-04", :contributionCount=>4},
+          {:date=>"2018-09-05", :contributionCount=>8},
+          {:date=>"2018-09-06", :contributionCount=>1},
+          {:date=>"2018-09-07", :contributionCount=>5},
+          {:date=>"2018-09-08", :contributionCount=>21}],
+      :averageCommits=>14.857142857142858
+    },
+    {
+      :firstDay=>"2018-09-09",
+      :contributionDays=>
+      [
+        {:date=>"2018-09-09", :contributionCount=>18},
+        {:date=>"2018-09-10", :contributionCount=>4},
+        {:date=>"2018-09-11", :contributionCount=>18},
+        {:date=>"2018-09-12", :contributionCount=>4},
+        {:date=>"2018-09-13", :contributionCount=>29},
+        {:date=>"2018-09-14", :contributionCount=>8},
+        {:date=>"2018-09-15", :contributionCount=>3}],
+     :averageCommits=>12.0
+    }
+  ]
+
+##### Failed Response
+
+#Request
+get '`/api/v1/commit_timelines?username=notarealuser&startDate=2019-01-01`
+
+# Response
+{
+  "error": "User notarealuser Not Found"
+}
+```
+
