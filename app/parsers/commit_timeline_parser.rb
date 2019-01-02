@@ -1,7 +1,7 @@
 class CommitTimelineParser
 
-  def get_data(username)
-    response = CommitTimelineQuery.execute_query(username)
+  def get_data(username, date_param = nil )
+    response = CommitTimelineQuery.execute_query(username, date_param)
     validate_response(response)
   end
 
