@@ -8,7 +8,6 @@ describe 'Follwoer Parser' do
       follower_parser = FollowerParser.new
       result = follower_parser.get_data(username)
 
-      binding.pry
       expect(result).to be_a(Array)
       expect(result.length).to be > 1
     end
