@@ -7,14 +7,16 @@ class MessagingInterface
 
   def conn
     Faraday.new(:url => ENV['MESSAGING_SERVICE']) do |f|
-      f.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      f.adapter  Faraday.default_adapter
+      f.headers['Content-Type'] = 'application/json'
     end
   end
 
   def post(username)
-    conn.post('/api/v1/emails') do |req|
-      req.body = {emails: get_emails(username),
-                  username: username}.to_json
+    body = {user: {"emails": get_emails(username),
+            "username": username}}.to_json
+    conn.post('/api/v1/users') do |req|
+      req.body=body
     end
   end
 
