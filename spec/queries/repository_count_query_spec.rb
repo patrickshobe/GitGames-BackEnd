@@ -6,10 +6,10 @@ describe 'Repository Count Spec' do
       username = 'tcraig7'
 
       response = RepositoryCountQuery.execute_query(username)
+      actual = response.repositories.nodes[0]
 
-      expect(response[0]).to have_key('year')
-      expect(response[0]).to have_key('count')
-      expect(response[0]).to have_key('repos')
+      expect(actual).to have_key('name')
+      expect(actual).to have_key('createdAt')
     end
   end
 end
