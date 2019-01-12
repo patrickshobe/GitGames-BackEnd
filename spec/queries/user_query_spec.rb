@@ -21,7 +21,6 @@ describe 'User Query Spec' do
       username = 'notarealusername123494739'
       response = UserQuery.execute_query(username)
 
-
       expect(response).to eq({error: "User #{username} Not Found"})
     end
   end
