@@ -3,6 +3,10 @@ class Cacher
     new(type, username).check_cache
   end
 
+  def self.save(type, username, value)
+    new(type, username).save_to_cache(value)
+  end
+
   def initialize(type, username)
     @type = type
     @username = username

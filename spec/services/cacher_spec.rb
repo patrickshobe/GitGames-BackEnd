@@ -14,10 +14,14 @@ describe 'Cacher Service' do
   it '#check_cache' do
     user_1 = 'patrickshobe'
     type = :user
-    user_1_value = 'dagnabit!'
+    user_1_value = {"exclaimed": 'dagnabit!'}
 
     user_2 = 'tcraig7'
-    user_2_value = 'sloth!'
+    user_2_value = {"exclaimed": 'sloth!'}
+
+    # Clears both entries from the cache as it persists between tests
+    Rails.cache.delete("#{user_1}_#{type.to_s}", user_1_value)
+    Rails.cache.delete("#{user_2}_#{type.to_s}", user_1_value)
 
     # Store user_1 in cache - skip user_2
     Rails.cache.write("#{user_1}_#{type.to_s}", user_1_value)
@@ -44,10 +48,14 @@ describe 'Cacher Service' do
   it '.find' do
     user_1 = 'patrickshobe'
     type = :user
-    user_1_value = 'dagnabit!'
+    user_1_value = {"exclaimed": 'dagnabit!'}
 
     user_2 = 'tcraig7'
-    user_2_value = 'sloth!'
+    user_2_value = {"exclaimed": 'sloth!'}
+
+    # Clears both entries from the cache as it persists between tests
+    Rails.cache.delete("#{user_1}_#{type.to_s}", user_1_value)
+    Rails.cache.delete("#{user_2}_#{type.to_s}", user_1_value)
 
     # Store user_1 in cache - skip user_2
     Rails.cache.write("#{user_1}_#{type.to_s}", user_1_value)
