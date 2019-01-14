@@ -14,6 +14,7 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 gem 'gqli'
+gem 'dalli'
 
 group :test do
   gem 'database_cleaner'
