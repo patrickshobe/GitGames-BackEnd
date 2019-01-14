@@ -1,9 +1,10 @@
-
 class UserQuery
   include QueryHelper
 
   def self.execute_query(username)
-    new.query(username)
+    query = new
+    return query.check_cache(:user, username) if query.check_cache(:user, username)
+    query.query(username, :user)
   end
 
   private
