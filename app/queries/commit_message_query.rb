@@ -3,13 +3,17 @@ class CommitMessageQuery
 
   def self.execute_query(username)
     query = new
+    # Check for cached
     if query.check_cache(:commit_message, username).nil?
+      # pull new
       user = query.get_user_id(username)
       return query.check_failure(user, username)
     else
+      # use cache
       return query.check_cache(:commit_message, username)
     end
   end
+
 
   def check_failure(user, username)
     unless user["user"]
