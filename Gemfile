@@ -15,6 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 gem 'gqli'
 gem 'dalli'
+gem 'memcachier'
 
 group :test do
   gem 'database_cleaner'
