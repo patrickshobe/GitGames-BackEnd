@@ -1,4 +1,5 @@
 class CommitMessageQuery
+  include QueryHelper
 
   def self.execute_query(username)
     query = new
@@ -37,14 +38,6 @@ class CommitMessageQuery
           }
         }
       })
-  end
-
-  def build_failure_response(username)
-    {error:  "User #{username} Not Found"}
-  end
-
-  def github_service(query)
-    GithubApiInterface.get(query)
   end
 
 end

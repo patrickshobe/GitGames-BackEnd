@@ -1,4 +1,5 @@
 class CommitTimelineQuery
+  include QueryHelper
 
   def self.execute_query(username, start_date = nil)
     new.execute(username, start_date)
@@ -56,9 +57,5 @@ class CommitTimelineQuery
   def validate_response(response, username)
     return build_failure_response(username) unless response["user"]
     return response
-  end
-
-  def build_failure_response(username)
-    {error: "User #{username} Not Found"}
   end
 end
