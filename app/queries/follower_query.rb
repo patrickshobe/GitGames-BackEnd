@@ -2,7 +2,9 @@ class FollowerQuery
   include QueryHelper
 
   def self.execute_query(username)
-    new.query(username)
+    query = new
+    return query.check_cache(:follower, username) if query.check_cache(:follower, username)
+    query.query(username, :follower)
   end
 
   def query_maker(username)

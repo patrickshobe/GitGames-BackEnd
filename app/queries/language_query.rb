@@ -2,7 +2,9 @@ class LanguageQuery
   include QueryHelper
 
   def self.execute_query(username)
-    new.query(username)
+    query = new
+    return query.check_cache(:language, username) if query.check_cache(:language, username)
+    query.query(username)
   end
 
   private

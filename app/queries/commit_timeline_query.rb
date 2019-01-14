@@ -6,9 +6,43 @@ class CommitTimelineQuery
   end
 
   def execute(username, start_date = nil)
-    return default_commit_timeline_query(username) unless start_date
-    return custom_commit_timeline_query(username, format_date(start_date))
+    return check_for_start_date(username, start_date)
   end
+
+  def check_for_start_date(username, start_date)
+    if start_date
+      response = get_with_start_date(username, start_date)
+    else
+      response = get_basic(username)
+    end
+    return response
+  end
+
+  def get_basic(username)
+    if check_cache(:commit_timeline, username)
+      response = check_cache(:commit_timeline, username)
+    else
+      response = default_commit_timeline_query(username)
+      save_to_cache(:commit_timeline,
+                    username,
+                    response)
+    end
+    return response
+  end
+
+  def get_with_start_date(username, start_date)
+    if check_cache("commit_timeline_#{start_date}", username)
+      response = check_cache("commit_timeline_#{start_date}", username)
+    else
+      response = custom_commit_timeline_query(username, format_date(start_date))
+      save_to_cache("commit_timeline_#{start_date}",
+                    username,
+                    response)
+    end
+    return response
+  end
+
+
 
   def format_date(start_date)
     "#{start_date}T00:00:00Z"
