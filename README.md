@@ -258,3 +258,61 @@ get '`/api/v1/commit_timelines?username=notarealuser&startDate=2019-01-01`
 }
 ```
 
+## Community Timeline
+
+Returns the User's community involvement from followers to pull requests
+
+It takes a username as a URL parameter
+
+
+`/api/v1/community?username=coder123`
+
+##### Successful Response
+
+```
+# Request
+get '/api/v1/community?username=coder123`
+
+# Response
+{
+  followers {
+    totalCount
+  },
+  following {
+    totalCount
+  },
+  starredRepositories {
+    totalCount
+  },
+  repositories {
+    totalCount
+  },
+  repositoriesContributedTo {
+    totalCount
+  },
+  watching {
+    totalCount
+  },
+  issues {
+    totalCount
+  },
+  issueComments {
+    totalCount
+  },
+  pullRequests {
+    totalCount
+  }
+}
+```
+
+##### Failed Response
+
+```
+#Request
+get '/api/v1/community?username=notarealuser`
+
+# Response
+{
+  "error": "User notarealuser Not Found"
+```
+}
