@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :commit_timelines, only: [:index]
       resources :languages, only: [:index]
       resources :users, only: [:index]
+      resources :community, only: [:index]
       resources :messaging, only: [:create]
     end
   end
