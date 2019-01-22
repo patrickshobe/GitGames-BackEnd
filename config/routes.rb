@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index]
       resources :community, only: [:index]
       resources :messaging, only: [:create]
+      resources :repository_timeline, only: [:index]
     end
   end
 end
