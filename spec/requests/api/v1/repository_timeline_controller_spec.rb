@@ -11,7 +11,7 @@ describe 'Repository Timeline API Endpoints' do
         expect(response.status).to be(200)
 
         repositories = JSON.parse(response.body)
-require "pry"; binding.pry
+
         expect(repositories).to have_key("2018")
         expect(repositories).to be_a(Hash)
         expect(repositories["2018"]).to be_a(Array)
