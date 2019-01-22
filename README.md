@@ -316,3 +316,37 @@ get '/api/v1/community?username=notarealuser`
   "error": "User notarealuser Not Found"
 ```
 }
+
+## Repositories Timeline
+
+##### Successful Response
+
+```
+# Request
+get '/api/v1/repository_timeline?username=coder123`
+
+# Response
+  {
+    "2018": [
+              "test1",
+              "test2",
+              "test3"
+            ],
+    "2019": [
+              "test4",
+              "test5"
+            ]
+  }
+```
+
+##### Failed Response
+
+```
+#Request
+get '/api/v1/repository_timeline?username=notarealuser`
+
+# Response
+{
+  "error": "User notarealuser Not Found"
+```
+}
