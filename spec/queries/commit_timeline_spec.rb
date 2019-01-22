@@ -24,4 +24,18 @@ describe 'Commit Timeline Query' do
 
     end
   end
+  it 'can query user commits over time with start date' do
+    VCR.use_cassette('commit_timeline_start') do
+      username = 'patrickshobe'
+      initial_response = CommitTimelineQuery.execute_query(username, '2018-06-01')
+      Rails.cache.write("patrickshobe_commit_timeline_2018-06-01", initial_response)
+      response = CommitTimelineQuery.execute_query(username, '2018-06-01')
+
+      expect(response).to be_a(Hash)
+      expect(response).to have_key("user")
+      expect(response["user"]).to have_key("contributionsCollection")
+      expect(response["user"]["contributionsCollection"]).to have_key("contributionCalendar")
+      expect(response["user"]["contributionsCollection"]["contributionCalendar"]).to have_key("weeks")
+    end
+  end
 end
