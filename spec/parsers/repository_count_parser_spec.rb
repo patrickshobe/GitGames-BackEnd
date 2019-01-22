@@ -15,14 +15,12 @@ describe 'Repository Count Parser Spec' do
     end
   end
 
-  xit 'can fail to query user repository count' do
+  it 'can fail to query user repository count' do
     VCR.use_cassette('repository_count_failure') do
       username = 'kjnasdfk;ajnsdfk;ajnsdf'
 
       repo_count = RepositoryCountParser.new
-      repo_count.get_data(username)
-
-      result = repo_count.repository_information
+      result = repo_count.get_data(username)
 
       expect(result).to be_a(Hash)
       expect(result.length).to be(1)

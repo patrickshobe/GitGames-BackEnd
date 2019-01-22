@@ -1,8 +1,4 @@
 class RepositoryCountParser
-  def initialize
-    @repositories_information = []
-  end
-
   def get_data(username)
     response = RepositoryCountQuery.execute_query(username)
     if response[:error]
