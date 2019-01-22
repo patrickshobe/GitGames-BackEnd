@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe 'Repository Count Spec' do
-  it 'can query a count of repositories by year' do
-    VCR.use_cassette('repo_count_query') do
+describe 'Repository Timeline Query Spec' do
+  it 'can query a timeline of repositories by year' do
+    VCR.use_cassette('repo_timeline_query') do
       username = 'tcraig7'
 
-      response = RepositoryCountQuery.execute_query(username)
+      response = RepositoryTimelineQuery.execute_query(username)
       actual = response.repositories.nodes[0]
 
       expect(actual).to have_key('name')
@@ -14,9 +14,9 @@ describe 'Repository Count Spec' do
   end
 
   it 'can return a failure message' do
-    VCR.use_cassette('failure_repo_count_query') do
+    VCR.use_cassette('failure_repo_timeline_query') do
       username = 'notarealusername123494739'
-      response = UserQuery.execute_query(username)
+      response = RepositoryTimelineQuery.execute_query(username)
 
       expect(response).to eq({error: "User #{username} Not Found"})
     end

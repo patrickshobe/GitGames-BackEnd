@@ -1,4 +1,4 @@
-class RepositoryCountQuery
+class RepositoryTimelineQuery
   include QueryHelper
 
   def self.execute_query(username)

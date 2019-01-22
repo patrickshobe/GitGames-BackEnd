@@ -1,6 +1,6 @@
-class RepositoryCountParser
+class RepositoryTimelineParser
   def get_data(username)
-    response = RepositoryCountQuery.execute_query(username)
+    response = RepositoryTimelineQuery.execute_query(username)
     return response if response[:error]
     narrow_response(response)
   end
