@@ -1,10 +1,10 @@
 # GitGames-Backend
 
-GitGames is a tool to give developer's metrics regarding their git history and to gamify being a developer.
+GitGames is a tool to give a developer additional metrics regarding their git history and to gamify being a developer.
 
 The back end of this application was built by Tara Craig (Github: @tcraig7) and Patrick Shobe (Github: @patrickshobe).
 
-The front end of this application was built by Aaron Weissman (Github: @aweissman11).
+The front end of this application was built by Aaron Weissman (Github: @aweissman11) and can be found at [GitGames](https://github.com/aweissman11/gitGames).
 
 #### Agile Board:
 
